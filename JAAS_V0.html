@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAAS.V0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(30, 30, 47, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh; /* Set maximum height for the container */
+            overflow-y: auto; /* Enable vertical scrolling */
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            letter-spacing: 2px;
+            animation: titleAnimation 0.5s ease-in-out;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin: 10px 0 20px;
+            color: #a0a0a0;
+        }
+
+        .element {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .element:hover {
+            transform: scale(1.02);
+        }
+
+        .rule-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .rule-container textarea {
+            width: 70%;
+            height: 40px;
+            margin-right: 10px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .add-rule-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-rule-btn:hover {
+            background-color: #45a049;
+        }
+
+        .legal-argument-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .legal-argument-container label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .legal-argument-container textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            resize: none;
+            margin-bottom: 5px;
+        }
+
+        .legal-argument-container .actions {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .legal-argument-container .actions span {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+
+        .legal-argument-container .actions button {
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .legal-argument-container .actions button:hover {
+            background-color: #d32f2f;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        .loading {
+            display: none;
+            font-size: 18px;
+            color: #ffeb3b;
+            margin-top: 10px;
+        }
+
+        @keyframes titleAnimation {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JAAS.V0</h1>
+        <div class="element">
+            <h3>Algorithm(Open-Source)</h3>
+            <div id="ruleContainer">
+                <div class="rule-container">
+                    <textarea placeholder="Enter rule (e.g., 'approve: condition1')"></textarea>
+                    <button class="add-rule-btn" onclick="addRule()">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="element">
+            <h3>Legal Arguments(Memos From the Panel)</h3>
+            <div class="legal-argument-container">
+                <label for="legalArgument">Enter Legal Argument:</label>
+                <textarea id="legalArgument" placeholder="Enter legal argument here"></textarea>
+                <div class="actions">
+                    <span id="characterCount">0 characters</span>
+                    <button onclick="clearLegalArgument()">Clear</button>
+                </div>
+            </div>
+            <button onclick="generateDecision()">Generate Decision</button>
+            <div class="loading" id="loading">Generating decision...</div>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function addRule() {
+            const ruleContainer = document.getElementById("ruleContainer");
+            const newRule = document.createElement("div");
+            newRule.classList.add("rule-container");
+            newRule.innerHTML = `
+                <textarea placeholder="Enter rule (e.g., 'approve: condition1')"></textarea>
+                <button class="add-rule-btn" onclick="removeRule(this)">-</button>
+            `;
+            ruleContainer.appendChild(newRule);
+        }
+
+        function removeRule(button) {
+            const ruleContainer = button.parentElement;
+            ruleContainer.remove();
+        }
+
+        function generateDecision() {
+            const ruleContainers = document.querySelectorAll("#ruleContainer .rule-container");
+            const algorithmRules = Array.from(ruleContainers).map(container => container.querySelector("textarea").value);
+            const legalArgument = document.getElementById("legalArgument").value.toLowerCase();
+            const resultElement = document.getElementById("result");
+            const loadingElement = document.getElementById("loading");
+
+            // Show loading message
+            loadingElement.style.display = "block";
+            resultElement.textContent = ""; // Clear previous result
+            resultElement.classList.remove("fade-in"); // Remove fade-in class for new animation
+
+            // Simulate a delay for decision generation
+            setTimeout(() => {
+                let decision = "Not Approved"; // Default decision
+
+                // Process each rule
+                for (let rule of algorithmRules) {
+                    const trimmedRule = rule.trim();
+                    if (trimmedRule) {
+                        const [action, condition] = trimmedRule.split(':').map(part => part.trim());
+                        if (action && condition && legalArgument.includes(condition.toLowerCase())) {
+                            decision = action === "approve" ? "Approved" : "Not Approved";
+                        }
+                    }
+                }
+
+                // Display the decision
+                resultElement.textContent = decision;
+                resultElement.classList.add("fade-in"); // Add fade-in class to show result
+                loadingElement.style.display = "none"; // Hide loading message
+            }, 2000); // Simulate a 2-second delay for decision generation
+        }
+
+        function clearLegalArgument() {
+            const legalArgumentInput = document.getElementById("legalArgument");
+            legalArgumentInput.value = "";
+            updateCharacterCount();
+        }
+
+        function updateCharacterCount() {
+            const legalArgumentInput = document.getElementById("legalArgument");
+            const characterCountElement = document.getElementById("characterCount");
+            characterCountElement.textContent = `${legalArgumentInput.value.length} characters`;
+        }
+
+        const legalArgumentInput = document.getElementById("legalArgument");
+        legalArgumentInput.addEventListener("input", updateCharacterCount);
+    </script>
+</body>
+</html>
