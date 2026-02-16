@@ -3,108 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Study on Judicial System and Implementation of an AI-Driven Judicial Process in India</title>
+    <title>IPArtFeed - Instagram-like Feed for Intellectual Properties</title>
     <style>
         body {
-            font-family: 'Garamond', serif;
-            background-color: #f5f5dc;
-            color: #333;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        header {
-            text-align: center;
-            border-bottom: 2px solid #8b4513;
-            padding-bottom: 10px;
+        .feed-container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            margin: 20px auto;
         }
-        h1 {
-            font-size: 2.5em;
-            color: #8b4513;
+        .post {
+            border-bottom: 1px solid #dbdbdb;
+            padding: 10px;
         }
-        h2 {
-            font-size: 2em;
-            color: #8b4513;
-            margin-top: 20px;
-            text-align: center; /* Center align headings */
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
         }
-        p, ul, ol {
-            margin: 15px auto; /* Center align paragraphs and lists */
-            max-width: 800px; /* Limit width for better readability */
+        .username {
+            font-weight: bold;
+            margin-left: 10px;
         }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            border-top: 2px solid #8b4513;
-            padding-top: 10px;
+        .post-image {
+            width: 100%;
+            height: auto;
+            display: block;
         }
-        iframe {
-            width: 100%; /* Make iframe responsive */
-            height: 600px; /* Set height for iframe */
-            border: none; /* Remove default border */
+        .post-caption {
+            margin: 10px 0;
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #8e8e8e;
+        }
+        .likes, .comments, .shares {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>A Study on Judicial System and Implementation of an AI-Driven Judicial Process in India</h1>
-        <h2>Authors</h2>
-        <p><strong>Rakunatha Khrishanth Manathra</strong><br>B.A., LLB.(Hons.)<br>Saveetha School of Law, SIMATS, Chennai, 600077<br>Email: rkhrishanthm@gmail.com</p>
-    </header>
+    <div class="feed-container">
+        <!-- Post 1 -->
+        <div class="post">
+            <div class="post-header">
+                <span class="username">@PatentAesthetics</span>
+            </div>
+            <img class="post-image" src="https://i.etsystatic.com/15445335/r/il/2a5ffa/5345334923/il_fullxfull.5345334923_6485.jpg" alt="Vintage coffee machine patents reimagined as a rustic collage">
+            <div class="post-caption">
+                Vintage coffee machine patents reimagined as a rustic collage – blending technical drawings with aged paper textures for that inventive vibe! #PatentArt #MixedMediaIP
+            </div>
+            <div class="post-actions">
+                <span class="likes">❤️ 245 likes</span>
+                <span class="comments">💬 32 comments</span>
+                <span class="shares">🔄 18 shares</span>
+            </div>
+        </div>
 
-    <section id="abstract">
-        <h2>Abstract</h2>
-        <p>India's judiciary is crucial for maintaining democracy, yet it faces significant challenges, particularly the overwhelming backlog of civil cases. This persistent issue not only delays justice but also undermines public trust in the legal system. This paper examines the Indian court system to identify inefficiencies and propose innovative solutions aimed at expediting justice delivery, focused on civil cases...</p>
-    </section>
+        <!-- Post 2 -->
+        <div class="post">
+            <div class="post-header">
+                <span class="username">@MusicCollageCreator</span>
+            </div>
+            <img class="post-image" src="https://i0.wp.com/thepaintedapron.com/wp-content/uploads/2018/02/musical-mixed-media.jpg?fit=1200%2C800&ssl=1" alt="Symphony of colors: guitar strings, piano keys, and sheet music layered in acrylic and pastels">
+            <div class="post-caption">
+                Dive into a symphony of colors: guitar strings, piano keys, and sheet music layered in acrylic and pastels. Turning melodies into visual harmony! #MusicIP #ArtisticNotes
+            </div>
+            <div class="post-actions">
+                <span class="likes">❤️ 312 likes</span>
+                <span class="comments">💬 45 comments</span>
+                <span class="shares">🔄 27 shares</span>
+            </div>
+        </div>
 
-    <section id="introduction">
-        <h2>Introduction</h2>
-        <p>The Indian judiciary is a cornerstone of democracy, yet it grapples with significant challenges...</p>
-    </section>
+        <!-- Post 3 -->
+        <div class="post">
+            <div class="post-header">
+                <span class="username">@DesignPatentDaily</span>
+            </div>
+            <img class="post-image" src="https://mechanixillustrated.technicacuriosa.com/wp-content/uploads/sites/3/2017/03/Vermin_Killer-1.jpg" alt="1882 gun mousetrap patent illustrated with dramatic flair">
+            <div class="post-caption">
+                The wild world of inventions: A 1882 gun mousetrap patent illustrated with dramatic flair. Who knew IP could be this quirky and artistic? #DesignPatent #IPIllustration
+            </div>
+            <div class="post-actions">
+                <span class="likes">❤️ 189 likes</span>
+                <span class="comments">💬 21 comments</span>
+                <span class="shares">🔄 14 shares</span>
+            </div>
+        </div>
 
-    <section id="objectives">
-        <h2>Objectives</h2>
-        <ul>
-            <li>Identify inefficiencies in the current judicial system.</li>
-            <li>Propose an AI-Driven Judicial System catered towards Civil Cases.</li>
-            <li>Ensure compliance and ethical standards of an AI-Driven Judicial Process.</li>
-            <li>Foster cultural acceptance and stakeholder engagement for the proposed Judicial System.</li>
-        </ul>
-    </section>
+        <!-- Post 4 -->
+        <div class="post">
+            <div class="post-header">
+                <span class="username">@CopyrightCollage</span>
+            </div>
+            <img class="post-image" src="https://www.befunky.com/images/wp/wp-2024-09-mixed-media-collage-example.jpg?auto=avif,webp&format=jpg&width=944" alt="Mixed media take on copyrights in collage art">
+            <div class="post-caption">
+                Exploring the boundaries of creativity: A mixed media take on copyrights in collage art, featuring layered elements like portraits and text overlays. Know your rights while creating! #CopyrightArt #CollageIP
+            </div>
+            <div class="post-actions">
+                <span class="likes">❤️ 278 likes</span>
+                <span class="comments">💬 39 comments</span>
+                <span class="shares">🔄 22 shares</span>
+            </div>
+        </div>
 
-    <section id="overview">
-        <h2>An Overview of the Notion</h2>
-        <p>India's judiciary plays a pivotal role in upholding democracy, yet it faces significant challenges regarding efficiency...</p>
-    </section>
-
-    <section id="implementation-considerations">
-        <h2>Implementation Considerations</h2>
-        <ol>
-            <li>Legal Compliance: The AI system must align with existing laws and regulations to ensure legal integrity.</li>
-            <li>Ethical Implications: A thorough analysis of the ethical considerations surrounding AI in judicial decision-making is necessary...</li>
-            <li>Infrastructure Integration: A detailed applied analysis is required to facilitate the integration of AI systems into the current judicial infrastructure...</li>
-            <li>Cultural Acceptance: Gaining the trust of stakeholders is essential for the acceptance of AI-driven processes in the judiciary.</li>
-        </ol>
-    </section>
-
-    <section id="current-issues">
-        <h2>Understanding Current Issues</h2>
-        <p>Understanding the current issues within the Indian judicial system is crucial for several reasons...</p>
-    </section>
-
-    <section id="methodology">
-        <h2>Methodology</h2>
-        <p>The methodology employed for collecting data in this research involved a mixed-methods approach...</p>
-    </section>
-
-    <section id="results">
-        <h2>Results</h2>
-       <iframe src="JAAS_V0.html" frameborder="0"></iframe>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Rakunatha Khrishanth Manathra & Sriram. All rights reserved.</p>
-    </footer>
-
+        <!-- Post 5 -->
+        <div class="post">
+            <div class="post-header">
+                <span class="username">@InventionArtHub</span>
+            </div>
+            <img class="post-image" src="https://i.etsystatic.com/22642921/r/il/a5f6b6/3243076020/il_1080xN.3243076020_rc19.jpg" alt="Gallery of grinder and brewer designs collaged into one epic piece">
+            <div class="post-caption">
+                More patent magic: A gallery of grinder and brewer designs collaged into one epic piece. Celebrating the artistry behind everyday inventions! #InventionCollage #MixedMediaDesign
+            </div>
+            <div class="post-actions">
+                <span class="likes">❤️ 201 likes</span>
+                <span class="comments">💬 28 comments</span>
+                <span class="shares">🔄 16 shares</span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
